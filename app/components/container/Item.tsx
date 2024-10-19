@@ -1,21 +1,21 @@
 import React from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import Link from "next/link";
-// import prisma from "@/app/prismadb";
+import prisma from "@/app/prismadb";
 
 type Props = {};
 
 const Item = async (props: Props) => {
-  //   const products = await prisma.product.findMany();
-  // console.log(products)
-  //   if (products.length === 0) {
-  //     return <div>empty</div>;
-  //   }
+  const products = await prisma.product.findMany();
+  console.log(products);
+  if (products.length === 0) {
+    return <div>empty</div>;
+  }
   return (
     <div>
       <h1 className="py-3 text-xl">Clothing</h1>
       <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 md:gap-20 gap-12 ">
-        {/* {products.map((product) => (
+        {products.map((product) => (
           <div key={product.id}>
             <Link href={`/dashboard/${product.id}`}>
               <div className="relative rounded-lg">
@@ -38,7 +38,7 @@ const Item = async (props: Props) => {
               </div>
             </Link>
           </div>
-        ))} */}
+        ))}
       </div>
     </div>
   );
